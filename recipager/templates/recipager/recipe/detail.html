@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container">
+  <h2 class="orange-text">{{ recipe.name }}</h2>
+  <!-- <a class="waves-effect waves-light btn"><i class="material-icons right">edit</i>Edit</a> -->
+</div>
+
+<div class="container">
+  <ul class="collection">
+    {% for ingredient in ingredients %}
+    <li class="collection-item">
+      <span class="title">{{ingredient.name}}</span>
+
+      <span class="secondary-content">
+        {{ingredient.amount}}{{ingredient.unit}}
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+    <h5 class="right-align">€ {{total}}</h5>
+</div>
+
+{% endblock %}

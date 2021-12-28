@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% block title %}Ingredients{% endblock %}
+{% block content %}
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h1 class="header center orange-text">Ingredients</h1>
+  </div>
+</div>
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <div class="row center">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12 center">
+            <i class="material-icons prefix">search</i>
+            <input type="text" id="autocomplete-input" class="autocomplete" />
+            <label for="autocomplete-input">Autocomplete</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <div class="row center">
+      <a
+        class="waves-effect waves-light btn-large"
+        href="{% url 'recipager:ingredient_add' %}"
+        ><i class="material-icons right">add</i>add ingredient</a
+      >
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    {% for ingredient in ingredients_list %}
+
+    <div class="col s12 m4">
+      <div class="card darken-1">
+        <div class="card-content">
+          <span class="card-title"
+            >{{ ingredient.name }}
+            <div class="chip right-align">{{ingredient.article_number}}</div>
+          </span>
+          <p>
+            €{{ingredient.cost}} per {{ingredient.quantity}}{{ingredient.unit}}
+          </p>
+        </div>
+        <div class="card-action">
+          <a href="{% url 'recipager:ingredient_edit' ingredient.id %}"
+            >Edit</a
+          >
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

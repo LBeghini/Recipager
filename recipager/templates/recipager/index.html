@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h1 class="header center orange-text">Recipager</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">Small Recipe Manager application.</h5>
+    </div>
+    <div class="row center">
+      <a
+        href="{% url 'recipager:recipe' %}"
+        id="recipe-button"
+        class="btn-large waves-effect waves-light orange"
+        >Recipes</a
+      >
+      <a
+        href="{% url 'recipager:ingredient' %}"
+        id="ingredient-button"
+        class="btn-large waves-effect waves-light orange"
+        >Ingredients</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}

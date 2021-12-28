@@ -1,0 +1,109 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container">
+  <h2 class="orange-text">
+    {% if ingredient %}Edit {% else %}Add {% endif %}Ingredient
+  </h2>
+</div>
+
+<div class="container">
+  <form
+    class="col s12"
+    action="
+    {% if ingredient %}
+    {% url 'recipager:ingredient_edit' ingredient.id%}
+    {% else %}
+    {% url 'recipager:ingredient_add' %}
+    {% endif %}
+    "
+    method="post"
+  >
+ {% csrf_token %}
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">shopping_basket</i>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          class="validate"
+          {%
+          if
+          ingredient
+          %}
+          value="{{ingredient.name}}"
+          {%
+          endif
+          %}
+        />
+        <label for="name">Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">euro_symbol</i>
+        <input
+          type="text"
+          name="cost"
+          id="cost"
+          data-type="currency"
+          {%
+          if
+          ingredient
+          %}
+          value="{{ingredient.cost}}"
+          {%
+          endif
+          %}
+        />
+        <label for="cost">Cost</label>
+      </div>
+      <div class="input-field col s3">
+        <i class="material-icons prefix">straighten</i>
+        <input
+          type="number"
+          name="quantity"
+          id="quantity"
+          {%
+          if
+          ingredient
+          %}
+          value="{{ingredient.quantity}}"
+          {%
+          endif
+          %}
+        />
+        <label for="quantity">Quantity</label>
+      </div>
+      <div class="input-field col s3">
+        <select name="unit">
+          <option value="g"           
+          {% if ingredient.unit == 'g' %}
+            selected
+            {% endif %}>Grams
+          </option>
+          <option value="kg" 
+          {% if ingredient.unit == 'kg' %}
+          selected
+          {% endif %}
+          >Kilograms</option>
+          <option value="cl" 
+          {% if ingredient.unit == 'cl' %}
+          selected
+          {% endif %}>Centiliter</option>
+          <option value="l"
+          {% if ingredient.unit == 'l' %}
+          selected
+          {% endif %}>Liter</option>
+        </select>
+        <label>Unit</label>
+      </div>
+    </div>
+
+    <button class="btn waves-effect waves-light" type="submit" name="action">
+      Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>
+{% endblock %}
