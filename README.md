@@ -1,4 +1,4 @@
-# Recipager
+# 🍽️ Recipager
 
 ## About
 
