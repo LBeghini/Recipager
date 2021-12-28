@@ -60,8 +60,6 @@ python manage.py runserver
 From a browser, go to url [localhost:8000/recipager/](http://localhost:8000/recipager/).
 If everything is working fine, you should be able to see the main page of the application.
 
-
-
 ## ⚖️ [License](https://github.com/LBeghini/Recipager/blob/main/LICENSE)
 Feel free to modify as you wish!
 
